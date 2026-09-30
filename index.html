@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Hasil Supervisi SDIT Ar-Refah T.A 2026/2027</title>
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --secondary: #f0fdf4;
+            --accent: #d97706;
+            --danger: #dc2626;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.7rem;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Login Box Styles */
+        .login-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .form-group select, 
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            background-color: white;
+            transition: border-color 0.2s;
+        }
+
+        .form-group select:focus, 
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .error-message {
+            background-color: #fef2f2;
+            color: var(--danger);
+            border: 1px solid #fecaca;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+
+        /* Portal Results Styles */
+        .portal-section {
+            display: none;
+        }
+
+        .user-header-bar {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .user-header-bar div h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+        }
+
+        .user-header-bar div p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-logout {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--danger);
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-logout:hover {
+            background-color: #fee2e2;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            margin: 25px 0 12px 0;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-score {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .badge-category {
+            background-color: #fef3c7;
+            color: #b45309;
+        }
+
+        .grid-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .detail-item h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .detail-item p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>SDIT AR-REFAH TANJUNGPINANG</h1>
+        <p>Portal Hasil Supervisi Guru - Semester I T.A. 2026/2027</p>
+    </header>
+
+    <!-- FORM LOGIN -->
+    <div id="loginCard" class="login-card">
+        <h2>Autentikasi Guru</h2>
+        <div id="errorMessage" class="error-message">NIPY yang Anda masukkan tidak sesuai dengan Nama Guru!</div>
+        
+        <div class="form-group">
+            <label for="guruSelect">Pilih Nama Guru:</label>
+            <select id="guruSelect">
+                <option value="">-- Pilih Nama Anda --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="nipyInput">Masukkan NIPY (Tanpa Spasi):</label>
+            <input type="password" id="nipyInput" placeholder="Contoh: 199908162021122193">
+        </div>
+
+        <button class="btn-login" onclick="loginPortal()">Masuk Portal</button>
+    </div>
+
+    <!-- TAMPILAN PORTAL HASIL SUPERVISI (SETELAH LOGIN) -->
+    <div id="portalSection" class="portal-section">
+        <div class="user-header-bar">
+            <div>
+                <h3 id="loggedTeacherName">Nama Guru</h3>
+                <p id="loggedTeacherNIPY">NIPY: -</p>
+            </div>
+            <button class="btn-logout" onclick="logoutPortal()">Keluar Log Out</button>
+        </div>
+
+        <!-- Hasil Supervisi Manajerial -->
+        <h3 class="section-title">I. Hasil Supervisi Manajerial (Kesiapan Administrasi)</h3>
+        <div id="manajerialContainer"></div>
+
+        <!-- Hasil Supervisi Pembelajaran -->
+        <h3 class="section-title">II. Hasil Supervisi Pembelajaran (Kegiatan Mengajar)</h3>
+        <div id="pembelajaranContainer"></div>
+    </div>
+</div>
+
+<script>
+    // Database Guru & NIPY tanpa spasi resmi SDIT Ar-Refah
+    const databaseGuru = [
+        { id: "1", nama: "Ayu Satriasih, S.Pd.I.Gr.", nipy: "19900123 2016082048" },
+        { id: "2", nama: "Veri Firmansyah, S.Pd.Gr", nipy: "199704272022071213" },
+        { id: "3", nama: "Nela Kurniaty, S.Pd.Gr", nipy: "199404282021122192" },
+        { id: "4", nama: "Sri Rahayu, S.Pd.AUD.Gr", nipy: "197911252014062023" },
+        { id: "5", nama: "Nilam Anugrah Ilahi, S.Pd.Gr", nipy: "199710212020112157" },
+        { id: "6", nama: "Ayunda Novita Lestari, S.E, Gr", nipy: "199201132018062087" },
+        { id: "7", nama: "Novianti, S.Pd.Gr", nipy: "197911212009092006" },
+        { id: "8", nama: "Astri Wijayati, S.Pd.Gr", nipy: "199905302021112190" },
+        { id: "9", nama: "Fatma, S.Pd.Gr", nipy: "199411012021072166" },
+        { id: "10", nama: "Hayatun Nufus, S.Pd.Gr", nipy: "199610162021072165" },
+        { id: "11", nama: "Lilik Marlina, S.Pd.Gr", nipy: "199001252017072060" },
+        { id: "12", nama: "Nirwana, S.Pd.Gr", nipy: "199707162020092154" },
+        { id: "13", nama: "Sheilla Armeillia Astighfarani, S.Pd.Gr", nipy: "199705192020072151" },
+        { id: "14", nama: "Rika Utari, S.Si.Gr", nipy: "199208172015052032" },
+        { id: "15", nama: "Korniawati, S.Pd.Gr", nipy: "199701022021072167" },
+        { id: "16", nama: "Ratna Riyanti, S.Ak.Gr", nipy: "199908162021122193" },
+        { id: "17", nama: "Jamilah Daulay, S.Pd", nipy: "199707262022072232" },
+        { id: "18", nama: "Abdul Sidik", nipy: "198805052019071129" },
+        { id: "19", nama: "Rony Ade Kurniawan", nipy: "200009122020111157" },
+        { id: "20", nama: "Arsipita, S.Pd.", nipy: "199208112021072183" },
+        { id: "21", nama: "Nordiana, S.E. Gr.", nipy: "199705072019012119" },
+        { id: "22", nama: "Alexander", nipy: "199304252022071230" }
+    ];
+
+    // Data Supervisi Manajerial
+    const dataManajerial = [
+        { teacherId: "16", mapel: "AQ", supervisor: "Rijalus Solihin, S.Pd.", kekuatan: "Perangkat pembelajaran tersedia dan digunakan dalam pelaksanaan pembelajaran. Target capaian sesuai. Catatan capaian diisi rutin.", saran: "Tujuan pembelajaran perlu dibuat lebih spesifik, jelas, dan terukur. Agenda mengajar dan daftar hadir diisi rutin.", tindakLanjut: "Upaya peningkatan kualitas pembelajaran Al-Qur'an melalui penyempurnaan tujuan dan perangkat ajar, tertib agenda & presensi.", nilai: 82.5, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "3", mapel: "AQ", supervisor: "Veri Firmansyah, S.Pd.", kekuatan: "Kesiapan administrasi sangat baik, terstruktur, dan konsisten dalam mendukung proses pembelajaran Al-Qur'an serta pembentukan karakter Islami murid.", saran: "Fokus pengembangan berpusat pada pembaruan administrasi, penguatan dokumentasi karakter, variasi penilaian & strategi Al-Qur'an.", tindakLanjut: "Pemeliharaan konsistensi administrasi, optimalisasi hasil penilaian untuk intervensi siswa, pengawasan berkala supervisor.", nilai: 100, kategori: "Sangat Baik, perlu konsistensi" },
+        { teacherId: "2", mapel: "TIK", supervisor: "Nela Kurniaty, S.Pd. Gr.", kekuatan: "Memiliki fondasi administrasi dan perencanaan pembelajaran yang baik, presensi tertib, pemantauan siswa menyeluruh.", saran: "Memiliki fondasi administrasi dan perencanaan yang baik, didukung pengelolaan presensi yang tertib.", tindakLanjut: "Melengkapi kelengkapan administrasi, pemeliharaan konsistensi, penguatan pembiasaan karakter Islami.", nilai: 70, kategori: "Cukup, perlu monitoring ulang" },
+        { teacherId: "8", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Menunjukkan kesiapan dan kualitas administrasi yang sangat unggul di semua lini mulai dari perencanaan hingga pendampingan siswa.", saran: "Pemenuhan administrasi asesmen secara komprehensif, program pengayaan, catatan perkembangan, dan dokumen wali kelas.", tindakLanjut: "Pemenuhan administrasi asesmen secara komprehensif, penyusunan program pengayaan, pengisian catatan perkembangan.", nilai: 82, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "9", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Administrasi guru sudah sangat baik dan lengkap. Perencanaan, pelaksanaan, asesmen, dan administrasi khas SDIT Ar-Refah terdokumentasi baik.", saran: "Melengkapi administrasi perkembangan peserta didik, asesmen, serta merapikan administrasi wali kelas dan dokumentasi pembinaan.", tindakLanjut: "Melengkapi administrasi perkembangan dan asesmen, memperbarui daftar nilai, merapikan administrasi kelas.", nilai: 84, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "14", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Administrasi dan perencanaan pembelajaran sangat baik, pelaksanaan harian tertib, kekhasan karakter Islami terkelola sangat baik.", saran: "Kelengkapan administrasi pada bagian Asesmen & Evaluasi, Administrasi Wali Kelas, dan Dokumentasi Khusus masih belum lengkap.", tindakLanjut: "Melengkapi perangkat asesmen, papan administrasi wali kelas, dan buku catatan anekdot siswa.", nilai: 87, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "13", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd.Gr.", kekuatan: "Seluruh komponen administrasi dari perencanaan, pelaksanaan harian, kekhasan SDIT, hingga perangkat penilaian terpenuhi sangat baik.", saran: "Administrasi kelas (struktur organisasi) masih kosong serta memerlukan pengisian dan penyelesaian segera.", tindakLanjut: "Penyelesaian berkas penilaian, penyusunan analisis asesmen, dan pemajangan struktur organisasi kelas.", nilai: 87, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "15", mapel: "MTK", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Perencanaan pembelajaran sudah baik, administrasi harian berjalan tertib, perangkat asesmen & evaluasi hampir lengkap.", saran: "Program khas keislaman SDIT Ar-Refah, catatan anekdot siswa, serta berkas penilaian masih kosong.", tindakLanjut: "Mengisi instrumen keislaman SDIT, menyediakan buku catatan anekdot, dan menyempurnakan berkas asesmen.", nilai: 76.67, kategori: "Cukup, perlu monitoring" },
+        { teacherId: "11", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd.Gr.", kekuatan: "Seluruh aspek administrasi mulai perencanaan, pelaksanaan harian, wali kelas, hingga program keislaman terpenuhi dengan baik.", saran: "Seluruh perangkat asesmen dan penilaian serta layanan remedial/pengayaan belum siap atau belum dilaksanakan.", tindakLanjut: "Penyelesaian perangkat asesmen perlu pelaksanaan dan penambahan buku administrasi kelas.", nilai: 76.67, kategori: "Cukup, perlu monitoring" },
+        { teacherId: "12", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd.", kekuatan: "Seluruh komponen perencanaan pembelajaran, pengelolaan kelas harian, dan administrasi keislaman terpenuhi konsisten skor sempurna.", saran: "Kelengkapan perangkat asesmen & daftar nilai serta penempelan papan administrasi wali kelas belum siap.", tindakLanjut: "Kelengkapan perangkat asesmen & daftar nilai serta administrasi wali kelas memerlukan pengisian dan pemasangan segera.", nilai: 77, kategori: "Cukup, perlu monitoring" },
+        { teacherId: "7", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd.", kekuatan: "Seluruh komponen perencanaan pembelajaran, administrasi harian kelas, dan program keislaman tersusun dan terisi baik & rapi.", saran: "Kelengkapan perangkat asesmen & penilaian, berkas fisik wali kelas, serta buku catatan perkembangan siswa masih minim.", tindakLanjut: "Tindak lanjut berfokus pada melengkapi perangkat asesmen & nilai, menempelkan administrasi fisik wali kelas.", nilai: 74, kategori: "Cukup, perlu monitoring" },
+        { teacherId: "4", mapel: "Walas", supervisor: "Ayu Satriasih, S.Pd.I.Gr.", kekuatan: "Seluruh aspek administrasi wali kelas, agenda & presensi harian, persiapan awal asesmen, hingga penilaian karakter terpenuhi lengkap.", saran: "Administrasi harian (jurnal & buku kelas), kalender pendidikan, dan perangkat asesmen lanjutan masih minim/belum terisi.", tindakLanjut: "Peningkatan kedisiplinan pengisian harian, penyempurnaan dokumen kurikulum, penyusunan asesmen berkelanjutan.", nilai: 70, kategori: "Cukup, perlu monitoring" },
+        { teacherId: "10", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Administrasi pembelajaran sudah disediakan tetapi belum diprint. Administrasi pelaksanaan pembelajaran diisi lengkap.", saran: "Perlu menyediakan daftar nilai, ketersediaan program remedial dan pengayaan pada RPM, serta melengkapi administrasi kelas.", tindakLanjut: "Pemeriksaan berkas dan dilakukan observasi ke II pada tanggal 26 September 2026.", nilai: 70, kategori: "Cukup, Perlu Observasi Lanjutan" },
+        { teacherId: "6", mapel: "Walas", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Administrasi perencanaan dan pelaksanaan pembelajaran lengkap namun belum diprint. Administrasi khas SIT dijalankan.", saran: "Perlu adanya program remedial dan pengayaan di dalam RPM, serta melengkapi administrasi kelas.", tindakLanjut: "Pemeriksaan berkas dan dilakukan observasi ke II pada tanggal 26 September 2026.", nilai: 75, kategori: "Cukup, Perlu pengecekan berkas lanjutan" },
+        { teacherId: "20", mapel: "AQ", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Administrasi perencanaan dan pelaksanaan pembelajaran tersedia sesuai dengan proses pembelajaran.", saran: "Perlu melengkapi capaian murid yang disesuaikan dengan silabus, dan menyediakan penilaian karakter adab & Islami pada RPM.", tindakLanjut: "Mengingatkan kembali pentingnya capaian yang disesuaikan dengan capaian ananda.", nilai: 79, kategori: "Cukup, Perlu Observasi lanjutan" }
+    ];
+
+    // Data Supervisi Pembelajaran (Termasuk Data Hasil Supervisi Mengajar 2 dari PDF)
+    const dataPembelajaran = [
+        { teacherId: "17", mapel: "Wafa", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Pembelajaran diintegrasikan dengan nilai/kebiasaan harian. Pengenalan konsep hijaiyah kepada murid sangat baik.", saran: "Monitoring anak ditingkatkan saat mengajar, atur kelompok al-quran, tambahkan integrasi nilai Islami di akhir sesi.", tindakLanjut: "Pengelolaan kelompok dan perlunya pembelajaran dari guru model untuk keteraturan P1 s.d. P5.", nilai: 68, kategori: "Perlu Pembinaan lebih lanjut" },
+        { teacherId: "7", mapel: "PAI", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Pemahaman materi sangat baik, pembelajaran runtun, perencanaan dan pelaksanaan pembelajaran sudah sesuai.", saran: "Perlu penggunaan media, berikan kesempatan anak bertanya/menjawab, perlu asesmen di RPM, gunakan pemahaman kontekstual.", tindakLanjut: "Perlu pemahaman untuk penggunaan model pembelajaran yang asik dan menyenangkan.", nilai: 80, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "16", mapel: "Wafa", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Perencanaan dan pelaksanaan pembelajaran sesuai, pemahaman materi dan teknik pengelolaan kelompok sangat baik.", saran: "Memberikan penugasan pada Ananda yang menunggu sesi talaqi wafa, penanaman nilai Islam sesuai materi.", tindakLanjut: "Perlu diingatkan untuk menyiapkan bahan pengalihan untuk ananda dan penanaman nilai Islami.", nilai: 88, kategori: "Baik. Bisa dijadikan guru model untuk kelas quran tinggi" },
+        { teacherId: "16", mapel: "Wafa", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Perencanaan dan pelaksanaan pembelajaran sesuai, pembelajaran dilaksanakan sesuai dengan waktu tersedia.", saran: "Memperhatikan ananda beda kelompok wafa dengan memberikan penugasan.", tindakLanjut: "Perlu diingatkan untuk menyiapkan bahan pengalihan untuk ananda yang belum diajarkan.", nilai: 85, kategori: "Baik, Bisa dijadikan guru model untuk kelas qur'an tinggi" },
+        { teacherId: "18", mapel: "Tahfizh", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Pembelajaran terlaksana dengan alokasi waktu yang ada.", saran: "Perencanaan & pelaksanaan tidak sesuai, perhatikan jadwal supervisi, monitoring anak kurang, RPM perlu dicek kembali.", tindakLanjut: "Perlu diikutsertakan dalam pelatihan/peer teaching qur'an untuk pengelolaan kelompok & menumbuhkan niat mengajar.", nilai: 55, kategori: "Perlu pembinaan lebih lanjut" },
+        { teacherId: "20", mapel: "Tahfizh", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Memberikan apresiasi penyemangat, perencanaan/pelaksanaan sesuai, talaqi konsisten, pengawasan sangat baik.", saran: "Bahas kaitan bacaan Qur'an dengan kehidupan sehari-hari murid, asesmen perlu ditambahkan dalam RPM.", tindakLanjut: "Perlu pengecekan ADM untuk asesmen dan diingatkan menginternalisasikan nilai Islam.", nilai: 80, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "19", mapel: "PJOK", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Pemahaman materi dan penjelasan runtun memudahkan murid langsung praktik, pengawasan anak sangat baik.", saran: "Perlu adanya perencanaan pembelajaran dan kelengkapan administrasi lainnya.", tindakLanjut: "Ikut dalam kombel walas untuk pembuatan RPM yang terencana.", nilai: 78, kategori: "Cukup, perlu peningkatan" },
+        { teacherId: "19", mapel: "PJOK", supervisor: "Veri Firmansyah, S.Pd.", kekuatan: "Penyajikan materi dan penyampaian lugas mudah dipahami, integrasi nilai Islami terlihat, semangat menyampaikan materi.", saran: "Perlu adanya perencanaan pembelajaran dan kelengkapan administrasi lainnya agar pelaksanaan sesuai rencana.", tindakLanjut: "Ikut dalam kombel walas untuk pembuatan RPM yang terencana.", nilai: 80, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "5", mapel: "B. Indo", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Pengelolaan kelas sangat baik, rencana pembelajaran sesuai dengan RPM yang tersedia.", saran: "Memberikan apresiasi kepada peserta didik, melakukan asesmen berupa observasi dalam pembelajaran.", tindakLanjut: "Perlu diingatkan untuk memberikan apresiasi dan asesmen dalam pembelajaran.", nilai: 83, kategori: "Baik, perlu peningkatan" },
+        { teacherId: "5", mapel: "B. Indo", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Pembelajaran runtun dengan metode interaktif, pengelolaan kelas sangat baik, memahami materi dengan sangat baik.", saran: "Internalisasi nilai Islami perlu dikuatkan di awal dan akhir pembelajaran.", tindakLanjut: "Perlu diingatkan untuk internalisasi nilai Islami dalam pembelajaran.", nilai: 87, kategori: "Baik, bisa menjadikan guru model untuk pembelajaran kelas rendah" },
+        
+        // Data Tambahan dari PDF Hasil Supervisi Mengajar 2
+        { teacherId: "18", mapel: "Wafa", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Pembelajaran terkondisi dengan baik, Bahasa yang digunakan jelas dan santun, mentalaqi anak secara konsisten, nada Wafa yang digunakan sesuai dan tepat.", saran: "Penyediaan RPM saat pembelajaran, melakukan evaluasi terhadap kemampuan baca secara berkala oleh anak dan memunculkan melakukan penilaian dan penguatan dalam proses pembelajaran.", tindakLanjut: "Mengingatkan untuk menyiapkan RPM, melakukan penilaian pada proses pembelajaran.", nilai: 75, kategori: "Perlu Peningkatan" },
+        { teacherId: "10", mapel: "P2", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Pembelajaran yang menyenangkan, Semangat dalam menyampaikan materi, dan mengkondisikan anak dengan baik.", saran: "Penyediaan RPM, Penggunaan media, ingatkan anak-anak untuk menjawab dengan mengangkat tangan kanan berikan penegasan, mematikan lampu dikelas menjelang siang hari, keamanan anak dalam permainan game, penyampaian materi yang runtut dan peningkatan penguatan materi yang telah disampaikan diakhir sesi.", tindakLanjut: "Diingatkan kembali untuk pentingnya ADM, penggunaan media, keamanan dalam permainan, dan memberikan penguatan terhadap materi yang telah disampaikan.", nilai: 68, kategori: "Perlu Pembinaan lebih lanjut" },
+        { teacherId: "4", mapel: "MTK", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Mampu menyampaikan materi dengan kontekstual pada anak-anak seperti penggunaan bola, buku, penghapus dan pensil sehingga memudahkan anak-anak dalam memahami pembelajaran.", saran: "Internalisasi nilai-nilai Islami dan penggunaan media pembelajaran.", tindakLanjut: "Diingatkan untuk menginternalisasikan nilai-nilai Islami dalam pembelajaran dan penggunaan media pembelajaran.", nilai: 70, kategori: "Perlu peningkatan" },
+        { teacherId: "21", mapel: "Wafa", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Pembelajaran berjalan baik dan dapat mengatasi permasalahan ananda dengan cara dan treatment yang baik sehingga ananda dapat mengikuti pembelajaran dengan sangat baik. Mampu menginternalisasi pembelajaran dengan nilai-nilai kehidupan sehari-hari. Administrasi ada dan dapat ditunjukkan.", saran: "Melakukan penilaian harian pada saat pembelajaran.", tindakLanjut: "Diingatkan untuk melakukan penilaian harian pada saat pembelajaran dan jurnal harian.", nilai: 86, kategori: "Baik, Bisa dijadikan guru model untuk kelas quran rendah" },
+        { teacherId: "11", mapel: "P2", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Menggunakan media dan teknologi yang dapat membantu peserta didik dalam memahami materi pembelajaran.", saran: "Aktivitas kegiatan pembelajaran yang tampak terburu-buru karena kesiapan media yang belum matang, estimasi pembelajaran yang melebihi waktu yang telah ditentukan, dan perlu diberikan penguatan kembali setelah dilakukan kegiatan pembelajaran.", tindakLanjut: "Diingatkan untuk melakukan pengelolaan waktu dan menyiapkan media sebelum pembelajaran agar pembelajaran lebih tenang dan nyaman.", nilai: 70, kategori: "Perlu peningkatan" },
+        { teacherId: "22", mapel: "Kitabah", supervisor: "Ayu Satriasih, S.Pd.I. Gr.", kekuatan: "Melakukan talaqi bacaan kepada Ananda sehingga ananda dapat membaca bacaan dengan benar.", saran: "Menyediakan ADM, mengisi jurnal kegiatan, dan kesesuaian jadwal dengan proses pembelajaran.", tindakLanjut: "Diingatkan untuk proses pembelajaran kitabah anak-anak harus lebih banyak menulis dan memberikan kebenaran tata cara menulis.", nilai: 65, kategori: "Perlu pembinaan lebih lanjut" },
+        { teacherId: "15", mapel: "MTK", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Monitoring murid ke setiap kelompok anak saat belajar, penggunaan media pembelajaran yang kontekstual dalam aplikasinya, kesiapan administrasi.", saran: "Memberi apresiasi sebelum masuk kedalam materi pembelajaran, penjelasannya lebih tertata dan runut sehingga anak-anak mengerti adanya kebermanfaatan dalam pembelajaran.", tindakLanjut: "Diikutkan untuk pelatihan pembelajaran pengelolaan manajemen kelas untuk peningkatan numerasi.", nilai: 75, kategori: "Perlu peningkatan" },
+        { teacherId: "6", mapel: "B.Indo", supervisor: "Veri Firmansyah, S.Pd. Gr.", kekuatan: "Internalisasi pembelajaran islaminya secara langsung dan lebih memperhatikan detail kecil kepada murid sehingga murid mudah untuk memahami hal yang harus, hal yang boleh dan tidak boleh dilakukan.", saran: "Menghemat energi dengan mematikan lampu, dan membuka tirai kelas sehingga cahaya maksimal masuk ke kelas, gunakan pemanfaatan media, dan mengaitkan nilai Islami dalam pembelajaran.", tindakLanjut: "Diingatkan untuk membuka tirai, penggunaan media dan internalisasi pembelajaran.", nilai: 78, kategori: "Perlu peningkatan" }
+    ];
+
+    // Inisialisasi Dropdown Guru
+    window.onload = function() {
+        const select = document.getElementById('guruSelect');
+        databaseGuru.sort((a,b) => a.nama.localeCompare(b.nama)).forEach(guru => {
+            const option = document.createElement('option');
+            option.value = guru.id;
+            option.textContent = guru.nama;
+            select.appendChild(option);
+        });
+    };
+
+    function removeSpaces(str) {
+        return str.replace(/\s+/g, '');
+    }
+
+    function loginPortal() {
+        const teacherId = document.getElementById('guruSelect').value;
+        const inputNIPY = document.getElementById('nipyInput').value.trim();
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (!teacherId || !inputNIPY) {
+            errorMessage.textContent = "Silakan pilih Nama Guru dan masukkan NIPY Anda!";
+            errorMessage.style.display = 'block';
+            return;
+        }
+
+        const currentGuru = databaseGuru.find(g => g.id === teacherId);
+
+        // Pencocokan NIPY tanpa spasi
+        if (removeSpaces(currentGuru.nipy) === removeSpaces(inputNIPY)) {
+            errorMessage.style.display = 'none';
+            document.getElementById('loginCard').style.display = 'none';
+            document.getElementById('portalSection').style.display = 'block';
+
+            document.getElementById('loggedTeacherName').textContent = currentGuru.nama;
+            document.getElementById('loggedTeacherNIPY').textContent = `NIPY: ${currentGuru.nipy}`;
+
+            tampilkanHasilSupervisi(currentGuru.id);
+        } else {
+            errorMessage.textContent = "NIPY yang Anda masukkan tidak cocok dengan nama guru yang dipilih!";
+            errorMessage.style.display = 'block';
+        }
+    }
+
+    function logoutPortal() {
+        document.getElementById('nipyInput').value = '';
+        document.getElementById('guruSelect').value = '';
+        document.getElementById('loginCard').style.display = 'block';
+        document.getElementById('portalSection').style.display = 'none';
+    }
+
+    function tampilkanHasilSupervisi(teacherId) {
+        const manajerialContainer = document.getElementById('manajerialContainer');
+        const pembelajaranContainer = document.getElementById('pembelajaranContainer');
+
+        const listManajerial = dataManajerial.filter(d => d.teacherId === teacherId);
+        manajerialContainer.innerHTML = listManajerial.length === 0 
+            ? '<div class="card"><p style="color:var(--text-muted)">Data Supervisi Manajerial belum tersedia untuk akun ini.</p></div>'
+            : listManajerial.map(item => createCard(item)).join('');
+
+        const listPembelajaran = dataPembelajaran.filter(d => d.teacherId === teacherId);
+        pembelajaranContainer.innerHTML = listPembelajaran.length === 0 
+            ? '<div class="card"><p style="color:var(--text-muted)">Data Supervisi Pembelajaran belum tersedia untuk akun ini.</p></div>'
+            : listPembelajaran.map(item => createCard(item)).join('');
+    }
+
+    function createCard(item) {
+        return `
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <strong>Mata Pelajaran / Tugas:</strong> ${item.mapel} | 
+                        <strong>Supervisor:</strong> ${item.supervisor}
+                    </div>
+                    <div>
+                        <span class="badge badge-score">Nilai: ${item.nilai}</span>
+                        <span class="badge badge-category">${item.kategori}</span>
+                    </div>
+                </div>
+                <div class="grid-detail">
+                    <div class="detail-item">
+                        <h4>Kekuatan</h4>
+                        <p>${item.kekuatan}</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Saran Perbaikan</h4>
+                        <p>${item.saran}</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Tindak Lanjut</h4>
+                        <p>${item.tindakLanjut}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
